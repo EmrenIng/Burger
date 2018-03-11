@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Burger Title</title>
+    <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
+</head>
+<body>
+    
+
+
+    
+<h1> Burgers</h1>
+
+
+<form method="POST" action="/burgers/update/{{id}}">
+<input type="hidden" name="burger_id" type="text" value={{this.id}}>
+<br>
+<button type="submit"> Devour it</button>
+</form>
+
+
+
+<div>
+{{#each burger_data}}
+    {{#if this.devoured}}
+        <input class="fourm-control" type="text" placeholder="{{this.id}}. {{this.burger_name}}" readonly>
+    {{/if}}
+{{/each}}
+</div>
+
+<div>
+<form action="/burgers/create" method="POST">
+<input type="text" name="burger_name" value="" id="enter_text">
+<button type="submit" id="text-enter-button">SUBMIT</button>
+</form>
+</div>
+
+
+
+</body>
+</html>

@@ -1,13 +1,17 @@
 var mysql = require("mysql");
 var burger = express.Router();
+var connection;
 
-var connection = mysql.createConnection({
+if (process.env.JAWSDB_URL) {
+   connection = mysql.createConnection(process.env.JAWSDB_URL);
+} else {
+    connection = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "root",
     database: "burger_db"
 });
-
+}
 // Make connection.
 connection.connect(function(err) {
     if (err) {

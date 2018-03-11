@@ -1,0 +1,37 @@
+
+        <div class="header"> 
+        <img src="assets/img/burger.png" alt="Burger Icon" height="350" width="350">
+        <h1>Eat The Burger</h1>
+        </div>
+        <div class="col-6">
+                    {{#each burger_data}}
+                    {{#unless this.devoured}}
+            
+            {{this.id}} {{this.burger_name}}
+            
+            <form method="POST" action="/burgers/update/{{id}}">
+            <input type="hidden" name="burger_id" type="text" value={{this.id}}>
+            <br>
+            <button type="submit"> Devour it</button>
+            </form>
+            
+            {{/unless}}
+            {{/each}}
+        </div><div class="col-6"> 
+                {{#each burger_data}}
+                {{#if this.devoured}}
+                    <input class="fourm-control" type="text" placeholder="{{this.id}}. {{this.burger_name}}" readonly>
+                {{/if}}
+            {{/each}}
+        </div>
+
+        <div class="header">
+                <form action="/burgers/create" method="POST">
+                    <input type="text" name="burger_name" value="" id="enter_text">
+                    <button type="submit" id="text-enter-button">SUBMIT</button>
+                </form>
+        </div> 
+
+
+
+
